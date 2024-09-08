@@ -1,0 +1,42 @@
+{% extends 'app/index_template.html' %}}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<section >
+<table class="table" width="100%" style="margin auto">
+    <thead>
+    <tr>
+        <th>Название</th>
+        <th>Тип</th>
+        <th>Корпус</th>
+        <th>Кол-во, шт.</th>
+        <th>Путь к DataSheet</th>
+    </tr>
+    </thead>
+ <tbody>
+    {% for tr in data %}
+    <tr>
+        <td>
+            <a href="/transistor/{{ tr.id }}/"> {{ tr.name }} </a>
+        </td>
+        <td>
+        {{ tr.get_type_display }}
+        </td>
+        <td>
+        {{ tr.korpus }}
+        </td>
+        <td>
+        {{ tr.amount }}
+        </td>
+        <td>
+
+        <a href="{{tr.path_file}}"> DataSheet</a>
+        </td>
+    </tr>
+    {% endfor %}
+
+    </tbody>
+</table>
+</section>
+{% endblock %}

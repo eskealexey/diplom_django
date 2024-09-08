@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'app/css/style_app.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'app/css/navgor.css' %}" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+
+</head>
+<body>
+
+<!--        Область шапки-->
+<section class="container">
+    <header class="header">
+        <div >
+            <img src="{% static 'app/img/logo.png' %}" width="75" height="75" alt="Логотип" />
+
+            <h1>Каталог радиодеталей</h1>
+        </div>
+   </header>
+</section>
+<section class="container">
+           <nav class="navbar navbar-expand-lg ">
+   <a class="navbar-brand" href="/">Home</a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+   </button>
+<div class="collapse navbar-collapse " id="navbarSupportedContent">
+     <ul class="navbar-nav mr-4">
+
+       <li class="nav-item">
+         <a class="nav-link" href="/transistor/">Транзисторы</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link " href="#">Диоды</a>
+       </li>
+       <li class="nav-item">
+         <a class="nav-link " href="#">Микросхемы</a>
+       </li>
+
+     </ul>
+
+   </div>
+</nav>
+</section>
+
+<!--область основного контента-->
+    <section class="container">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <span class="text-justify">  </span>
+            </div>
+
+            <div class="row">
+
+            <div class="col-lg-8 col-md-8 col-sm-12 desc">
+                {% block content%}
+
+              {% endblock %}
+            </div>
+
+        </div>
+   </section>
+
+<!--область подвала-->
+  <section id="button" class="container">
+
+                 E&F &copy; 2024
+  </section>
+    </body>
+</html>
