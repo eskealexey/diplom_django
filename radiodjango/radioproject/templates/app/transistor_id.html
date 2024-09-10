@@ -9,8 +9,15 @@
     <p><i>Краткое описание:</i> <br>
        <b>{{ data.descr }}</b></p>
     <p><i>Количество, шт.:</i>  <b>{{ data.amount }}</b></p>
-    <p><a href="{{data.path_file}}"> DataSheet</a></p>
-    <p></p>
+    {% if data.path_file %}
+    <p><a href="{{data.path_file.url}}"> DataSheet</a></p>
+
+    {% else %}
+        <p>
+        <span class="fst-italic text-info">DataSheet отсутствует</span>
+        </p>
+    {% endif %}
+    <p><input type="button" onclick="history.back();" value="Назад"/></p>
 
 </section>
 {% endblock %}

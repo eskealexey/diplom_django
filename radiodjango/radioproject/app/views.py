@@ -1,6 +1,6 @@
 from random import choices
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template.context_processors import request
 from django.core.paginator import Paginator
 from .models import Transistor
@@ -54,19 +54,22 @@ def transistor_app_id(request, id_tr):
 
 
 def transistor_forma_add(request):
-    global form
-    if request.method == 'POST' and request.FILES['path_file']:
+    if request.method == 'POST':
         form = TransistorAdd(request.POST, request.FILES)
         if form.is_valid():
             name = form.cleaned_data['name']
-            type_tr = form.cleaned_data['type_tr']
+            type_tr = form.cleaned_data['type']
             korpus = form.cleaned_data['korpus']
             descr = form.cleaned_data['descr']
             path_file = form.cleaned_data['path_file']
 
             print(name)
+            print(type_tr)
+            print(korpus)
             print(descr)
             print(path_file)
+            form.save()
+            return redirect('transistorlist')
     else:
         form = TransistorAdd()
 

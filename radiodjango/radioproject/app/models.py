@@ -21,19 +21,22 @@ class Transistor(models.Model):
         ('SOT-669', 'SOT-669'),
         ('TO-263', 'TO-263'),
     ]
-    name = models.CharField(max_length=10)
+    name = models.CharField(max_length=10, blank=False, unique=True, db_index=True, verbose_name='наименование')
     type = models.CharField(
         max_length=3,
         choices=TYPE_CHOICES,
+        verbose_name='тип транзистора',
     )
     korpus = models.CharField(
-        max_length=8,
+        max_length=20,
         choices=KORPUS_CHOICES,
-        default='TO-92'
+        default='TO-92',
+        verbose_name='тип корпуса',
     )
-    descr = models.TextField(default='Описание')
-    amount = models.IntegerField(default=0)
-    path_file = models.FileField(upload_to='static/files/')
+    descr = models.TextField(blank=True, verbose_name='краткое описание')
+    amount = models.IntegerField(default=0, blank=True, verbose_name='количество, шт.')
+    path_file = models.FileField(upload_to='datasheet', default=None, blank=True, verbose_name='datasheet')
 
     def __str__(self):
         return self.name
+
