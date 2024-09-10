@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import path, include # new
+from django.conf.urls.static import static # new
 from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add
 
 urlpatterns = [
