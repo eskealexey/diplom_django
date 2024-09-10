@@ -59,7 +59,7 @@ def transistor_forma_add(request):
         form = TransistorAdd(request.POST, request.FILES)
         if form.is_valid():
             name = form.cleaned_data['name']
-            type_tr = form.cleaned_data['tpe_tr']
+            type_tr = form.cleaned_data['type_tr']
             korpus = form.cleaned_data['korpus']
             descr = form.cleaned_data['descr']
             path_file = form.cleaned_data['path_file']

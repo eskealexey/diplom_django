@@ -33,7 +33,7 @@ class Transistor(models.Model):
     )
     descr = models.TextField(default='Описание')
     amount = models.IntegerField(max_length=10, default=0)
-    path_file = models.CharField(max_length=250)
+    path_file = models.FileField(upload_to='app/files/')
 
     def __str__(self):
         return self.name
