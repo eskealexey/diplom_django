@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app.views import index_app, transistor_app, transistor_app_id
+from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index_app),
     path('transistor/', transistor_app),
     path('transistor/<int:id_tr>/', transistor_app_id),
+    path('transistor/formadd/', transistor_forma_add),
 ]

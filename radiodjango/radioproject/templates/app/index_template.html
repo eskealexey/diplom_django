@@ -13,63 +13,63 @@
 
 </head>
 <body>
-
-<!--        Область шапки-->
-<section class="container">
-    <header class="header">
-        <div >
-            <img src="{% static 'app/img/logo.png' %}" width="75" height="75" alt="Логотип" />
-
-            <h1>Каталог радиодеталей</h1>
-        </div>
-   </header>
-</section>
-<section class="container">
-           <nav class="navbar navbar-expand-lg ">
-   <a class="navbar-brand" href="/">Home</a>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-     <span class="navbar-toggler-icon"></span>
-   </button>
-<div class="collapse navbar-collapse " id="navbarSupportedContent">
-     <ul class="navbar-nav mr-4">
-
-       <li class="nav-item">
-         <a class="nav-link" href="/transistor/">Транзисторы</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link " href="#">Диоды</a>
-       </li>
-       <li class="nav-item">
-         <a class="nav-link " href="#">Микросхемы</a>
-       </li>
-
-     </ul>
-
-   </div>
-</nav>
-</section>
-
-<!--область основного контента-->
-    <section class="container">
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <span class="text-justify">  </span>
+        <section class="container">
+            <div class="logo">
+                <img src="{% static 'app/img/logo.png' %}" width="75" height="75" alt="Логотип" />
+            </div>
+            <div class="label">
+                <b>Каталог радиодеталей</b>
             </div>
 
-            <div class="row">
+        </section>
+        <section class="container">
+            <nav class="navbar navbar-expand-lg ">
+               <a class="navbar-brand" href="/">Home</a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+               </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                 <ul class="navbar-nav mr-4">
 
-            <div class="col-lg-8 col-md-8 col-sm-12 desc">
-                {% block content%}
+                   <li class="nav-item">
+                     <a class="nav-link" href="/transistor/">Транзисторы</a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link " href="#">Диоды</a>
+                   </li>
+                   <li class="nav-item">
+                     <a class="nav-link " href="#">Микросхемы</a>
+                   </li>
 
-              {% endblock %}
-            </div>
+                 </ul>
 
-        </div>
-   </section>
+               </div>
+            </nav>
+        </section>
 
-<!--область подвала-->
-  <section id="button" class="container">
+        <section class="container content">
+            {% block left %}
 
-                 E&F &copy; 2024
-  </section>
+            {% endblock %}
+
+            <article class="main">
+
+
+                {% block content %}
+
+            <aside>
+
+            </aside>
+                {% endblock %}
+
+            </article>
+
+
+        </section>
+        <footer id="footer" class="container">
+             E&F &copy; 2024
+        </footer>
+
+
     </body>
 </html>

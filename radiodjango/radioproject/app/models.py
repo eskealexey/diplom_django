@@ -15,7 +15,7 @@ class Transistor(models.Model):
         ('SOT-23', 'SOT-23'),
         ('SOT-89', 'SOT-89'),
         ('SOT-223', 'SOT-223'),
-        ('NO-126', 'TO-126'),
+        ('TO-126', 'TO-126'),
         ('TO-220', 'TO-220'),
         ('TO-252', 'TO-252'),
         ('SOT-669', 'SOT-669'),

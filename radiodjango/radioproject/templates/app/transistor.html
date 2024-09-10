@@ -15,7 +15,7 @@
     </tr>
     </thead>
  <tbody>
-    {% for tr in data %}
+    {% for tr in page_obj %}
     <tr>
         <td>
             <a href="/transistor/{{ tr.id }}/"> {{ tr.name }} </a>
@@ -38,5 +38,62 @@
 
     </tbody>
 </table>
+
+    <div>
+    <table width="20%" class="table" >
+        <tr>
+            <td width="33%">
+    {% if page_obj.has_other_pages %}
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}&pag={{ pag }}">&lt;&lt;</a>
+        {% endif %}
+            </td>
+            <td width="33%">
+        {% for i in page_obj.paginator.page_range %}
+            {% if page_obj.number == i %}
+                <b>{{ i }}</b>
+            {% else %}
+                <a href="?page={{ i }}&pag={{ pag }}">{{ i }}</a>
+            {% endif%}
+        {% endfor %}
+            </td>
+            <td width="33%" style="text-align: right">
+        {% if page_obj.has_next %}
+           <a href="?page={{ page_obj.next_page_number }}&pag={{ pag }}">&gt;&gt;</a>
+        {% endif %}
+    {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center">
+                <form method="POST">
+                    {% csrf_token %}
+                    Кол-во строк на стр.
+                    <select name="select">
+                        {% for p in select_chouis %}
+                            {% if p == pag  %}
+                                <option value={{ pag }} selected>{{ p }}</option>
+                            {% else %}
+                                <option value={{ p }} >{{ p }}</option>
+                            {% endif %}
+                        {% endfor %}
+
+                      </select>
+                    <button type="submit">ok</button>
+                </form>
+
+            </td>
+        </tr>
+    </table>
+    </div>
+
 </section>
+{% endblock %}
+
+{% block left %}
+<aside class="left">
+    <a href="/transistor/formadd/"> <button type="button"> <b>Добавить<br> транзистор <br>в каталог </b></button></a>
+
+
+</aside>
 {% endblock %}

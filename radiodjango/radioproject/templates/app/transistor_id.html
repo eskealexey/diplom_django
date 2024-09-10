@@ -1,9 +1,23 @@
 {% extends 'app/index_template.html' %}}
 
 {% block content %}
-<h1>{{ title }} {{ data.name }}</h1>
+<h2>{{ title }} <u>{{ data.name }}</u></h2>
 
 <section >
+    <p><i>Тип:</i> <b>{{ data.get_type_display }}</b></p>
+    <p><i>Корпус:</i> <b>{{ data.korpus }}</b></p>
+    <p><i>Краткое описание:</i> <br>
+       <b>{{ data.descr }}</b></p>
+    <p><i>Количество, шт.:</i>  <b>{{ data.amount }}</b></p>
+    <p><a href="{{data.path_file}}"> DataSheet</a></p>
+    <p></p>
 
 </section>
-{% endblock %}ml>
+{% endblock %}
+
+
+{% block left %}
+            <aside class="left">
+
+            </aside>
+{% endblock %}

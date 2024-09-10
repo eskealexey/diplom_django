@@ -1,5 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 9 сент. 2024 г., 08:48:21
+    Author     : 044EskeAA@0044.pfr.ru
+*/
+* {
+    margin: 0;
+}
+
+body {
+    width: 80%;
+    margin: 5px auto;
+
+}
+
+/*section {
+    padding: 5px;
+}*/
+
+.left {
+    /*background-color: yellow;*/
+    width: 20%;
+    display: inline-block;
+    border: 1px solid #888;
+    padding: 2px;
+    height: auto;
+}
+.main {
+    padding: 5px;
+    width: 80%;
+    display: inline-block;
+
+}
+.content {
+    display: flex;
+}
+
+.logo{
+    display: inline-block;
+    padding: 2px;
+}
+
+.label {
+    padding: 2px;
+    font-size: 36pt;
+    font-style:oblique;
+    width: auto;
+    display: inline-block;
+}
+#footer{
+    background-color: #cccccc;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px auto;
+}
+
+
 .navbar{
- background:#F97300;
+ /*background:#F97300;*/
+ background-color: #cccccc;
+     margin-bottom: 5px;
+     margin-bottom: 5px;
 }
 .nav-link , .navbar-brand{
  color: #f4f4f4;
@@ -78,3 +143,6 @@
 	background: #F7F7F7;
 }
 
+.shrift_table {
+    font-size: 8px;
+}
