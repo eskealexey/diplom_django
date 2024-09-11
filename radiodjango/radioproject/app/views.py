@@ -3,6 +3,9 @@ from random import choices
 from django.shortcuts import render, redirect
 from django.template.context_processors import request
 from django.core.paginator import Paginator
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from .forms import  UserRegistrationForm
 from .models import Transistor
 from .forms import TransistorAdd
 
@@ -108,4 +111,23 @@ def transistor_forma_add(request):
     }
     return render(request, 'app/transistor_forma_add2.html', context=data)
 
+def registration(request):
+    context = {
+        'title': 'Регистрация пользователя',
+    }
+    return render(request, 'app/registration.html', context=context)
 
+def register(request):
+    if request.method == 'POST':
+        user_form = UserRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            return render(request, 'app/registeraion.html', {'new_user': new_user})
+    else:
+        user_form = UserRegistrationForm()
+    return render(request, 'app/registration.html', {'user_form': user_form})
