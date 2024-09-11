@@ -4,9 +4,9 @@
 <h3>{{ title }}</h3>
 
 <section>
-   <form method="POST" enctype="multipart/form-data">
+   <form method="post" action="" enctype="multipart/form-data">
      {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
      <p>
        <button type="submit">Добавить в каталог</button>
      </p>

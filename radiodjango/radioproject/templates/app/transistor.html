@@ -21,7 +21,7 @@
             <a href="/transistor/{{ tr.id }}/"> {{ tr.name }} </a>
         </td>
         <td>
-        {{ tr.get_type_display }}
+        {{ tr.type }}
         </td>
         <td>
         {{ tr.korpus }}
@@ -31,7 +31,14 @@
         </td>
         <td>
 
-        <a href="{{tr.path_file}}"> DataSheet</a>
+        {% if tr.path_file %}
+             <p><a href="{{tr.path_file.url}}"> DataSheet</a></p>
+        {% else %}
+            <p>
+                <span class="fst-italic text-info">отсутствует</span>
+            </p>
+        {% endif %}
+
         </td>
     </tr>
     {% endfor %}

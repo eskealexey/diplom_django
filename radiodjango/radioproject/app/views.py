@@ -1,10 +1,11 @@
 from random import choices
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template.context_processors import request
 from django.core.paginator import Paginator
 from .models import Transistor
 from .forms import TransistorAdd
+
 
 # Create your views here.
 def index_app(request):
@@ -15,7 +16,7 @@ def index_app(request):
 
 
 def transistor_app(request):
-    SELECT_CHOUIS = ['5', '10', '15', '20', '25',]
+    SELECT_CHOUIS = ['5', '10', '15', '20', '25', ]
     data = Transistor.objects.all()
 
     if request.GET.get('pag') is None:
@@ -45,34 +46,66 @@ def transistor_app(request):
 
 def transistor_app_id(request, id_tr):
     data = Transistor.objects.get(id=id_tr)
+    if (request.POST):
+        error = ''
+        data_dict =  request.POST.dict()
+        act = data_dict.get('act')
+        quantity = data_dict.get('quantity ')
+        try:
+            quantity = abs(int(quantity))
+            total = data.amount
+            print(total)
+            if act is not None:
+                if act == 'add':
+                    total += quantity
+                elif (act == 'del') and (total >= quantity):
+                    total -= quantity
 
-    context = {
-        'title': 'Транзистор',
-        'data': data,
-    }
-    return render(request, 'app/transistor_id.html', context=context)
+                data.amount = total
+                data.save(update_fields=['amount'])
+            else:
+                error = 'не выбрано действие'
+
+            context = {
+                'title': 'Транзистор',
+                'data': data,
+                'error': error,
+            }
+        except Exception as err:
+            print(err)
+            error = 'не число'
+            context = {
+                'title': 'Транзистор',
+                'data': data,
+                'error': error,
+            }
+        return render(request, 'app/transistor_id.html', context=context)
+    else:
+        context = {
+            'title': 'Транзистор',
+            'data': data,
+            'error': '',
+        }
+        return render(request, 'app/transistor_id.html', context=context)
 
 
 def transistor_forma_add(request):
-    global form
-    if request.method == 'POST' and request.FILES['path_file']:
+    if request.method == 'POST':
         form = TransistorAdd(request.POST, request.FILES)
         if form.is_valid():
             name = form.cleaned_data['name']
-            type_tr = form.cleaned_data['type_tr']
+            type_tr = form.cleaned_data['type']
             korpus = form.cleaned_data['korpus']
             descr = form.cleaned_data['descr']
             path_file = form.cleaned_data['path_file']
-
-            print(name)
-            print(descr)
-            print(path_file)
+            form.save()
+            return redirect('transistorlist')
     else:
         form = TransistorAdd()
-
-
     data = {
         'title': 'Добаление транзистора в каталог',
         'form': form,
     }
     return render(request, 'app/transistor_forma_add2.html', context=data)
+
+

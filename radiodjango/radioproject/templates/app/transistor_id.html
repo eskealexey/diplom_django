@@ -4,20 +4,44 @@
 <h2>{{ title }} <u>{{ data.name }}</u></h2>
 
 <section >
-    <p><i>Тип:</i> <b>{{ data.get_type_display }}</b></p>
+    <p><i>Тип:</i> <b>{{ data.type }}</b></p>
     <p><i>Корпус:</i> <b>{{ data.korpus }}</b></p>
     <p><i>Краткое описание:</i> <br>
        <b>{{ data.descr }}</b></p>
     <p><i>Количество, шт.:</i>  <b>{{ data.amount }}</b></p>
-    <p><a href="{{data.path_file}}"> DataSheet</a></p>
-    <p></p>
+    {% if data.path_file %}
+    <p><a href="{{data.path_file.url}}"> DataSheet</a></p>
+
+    {% else %}
+        <p>
+        <span class="fst-italic text-info">DataSheet отсутствует</span>
+        </p>
+    {% endif %}
+    <p><input type="button" onclick="history.back();" value="Назад"/></p>
 
 </section>
 {% endblock %}
 
 
 {% block left %}
-            <aside class="left">
+    <aside class="left">
+        <form method="post" action="" >
+            {% csrf_token %}
+            <p>
+                {{ error }} <br>
+                <label for="quantity ">Кол-во:</label><br>
+                <input type="text" size="3" name="quantity " id="quantity " placeholder="шт." >
+            </p>
+            <p>
+                <p><input name="act" type="radio" value="add" > Добавить<br>
+                <input name="act" type="radio" value="del">Удалить</p>
 
-            </aside>
+            </p>
+            <p>
+       <button type="submit">Выполнить</button>
+     </p>
+        </form>
+    {{ act }} {{ quantity }}
+    </aside>
+
 {% endblock %}
