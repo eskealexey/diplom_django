@@ -8,6 +8,7 @@
     <thead>
     <tr>
         <th>Название</th>
+        <th>Маркировка</th>
         <th>Тип</th>
         <th>Корпус</th>
         <th>Кол-во, шт.</th>
@@ -19,6 +20,9 @@
     <tr>
         <td>
             <a href="/transistor/{{ tr.id }}/"> {{ tr.name }} </a>
+        </td>
+        <td>
+        {{ tr.markname }}
         </td>
         <td>
         {{ tr.type }}

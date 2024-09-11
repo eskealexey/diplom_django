@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class Transistor(models.Model):
     name = models.CharField(max_length=10, blank=False, unique=True, db_index=True, verbose_name='наименование')
+    markname = models.CharField(max_length=20, blank=True, verbose_name='маркировка')
     type = models.ForeignKey('TypeTransistor', on_delete=models.PROTECT, null=True, verbose_name='тип транзистора')
     korpus = models.ForeignKey('KorpusTransistor', on_delete=models.PROTECT, null=True, verbose_name='корпус')
     descr = models.TextField(blank=True, verbose_name='краткое описание')

@@ -7,4 +7,4 @@ from .models import Transistor
 class TransistorAdd(ModelForm):
     class Meta:
         model = Transistor
-        fields = ["name", "type", "korpus", "descr", "path_file"]
+        fields = ["name", "markname", "type", "korpus", "descr", "path_file"]
