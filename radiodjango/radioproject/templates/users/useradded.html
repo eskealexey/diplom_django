@@ -1,0 +1,17 @@
+{% extends 'users/index_template.html' %}}
+
+{% block content %}
+
+
+<section >
+    <h3> Пользователь <u>{{ new_user }}</u> создан.</h3>
+    <a href="{% url 'login' %}"> Войти в аккаунт </a>
+</section>
+{% endblock %}
+
+
+{% block left %}
+    <aside class="left">
+    </aside>
+
+{% endblock %}>

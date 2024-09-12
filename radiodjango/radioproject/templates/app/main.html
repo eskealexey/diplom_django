@@ -12,7 +12,11 @@
 
 {% block left %}
     <aside class="left">
-          <a href="{% url 'registration' %}">Регистрация</a> | <a href="#">Войти</a>
+        {% if request.user.is_authenticated %}
+            {{ user.username }} |  <a href="{% url 'logout' %}">Выйти</a>
+        {% else %}
+          <a href="{% url 'registration' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a>
+        {% endif %}
     </aside>
 
 {% endblock %}

@@ -19,8 +19,10 @@ from django.template.defaulttags import url
 
 from django.urls import path, include # new
 from django.conf.urls.static import static # new
-from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add, registration,register
+from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add
+from users.views import register, LoginUser
 
+from users.views import loguot_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,8 +30,9 @@ urlpatterns = [
     path('transistor/', transistor_app, name='transistorlist'),
     path('transistor/<int:id_tr>/', transistor_app_id, name='transistorview'),
     path('transistor/formadd/', transistor_forma_add, name='transistoradd'),
-    # path('registration/', registration, name='registration'),
     path('registration/', register, name='registration'),
+    path('login/', LoginUser.as_view(), name='login'),
+    path('logout/', loguot_user, name='logout')
 ]
 
 if settings.DEBUG:

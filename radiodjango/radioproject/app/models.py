@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 class Transistor(models.Model):
     name = models.CharField(max_length=10, blank=False, unique=True, db_index=True, verbose_name='наименование')
@@ -10,6 +11,7 @@ class Transistor(models.Model):
     descr = models.TextField(blank=True, verbose_name='краткое описание')
     amount = models.IntegerField(default=0, blank=True, verbose_name='количество, шт.')
     path_file = models.FileField(upload_to='datasheet/transistors', default=None, blank=True, verbose_name='datasheet')
+    userid = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='user', null=False)
 
     def __str__(self):
         return self.name
