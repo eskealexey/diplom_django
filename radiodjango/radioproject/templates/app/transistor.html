@@ -79,7 +79,7 @@
             <td colspan="3" style="text-align: center">
                 <form method="POST">
                     {% csrf_token %}
-                    Кол-во строк на стр.
+                <small class="text-muted">Кол-во строк на стр.</small>
                     <select name="select">
                         {% for p in select_chouis %}
                             {% if p == pag  %}

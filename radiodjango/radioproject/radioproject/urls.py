@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-
+from django.template.defaulttags import url
 
 from django.urls import path, include # new
 from django.conf.urls.static import static # new
-from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add
+from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add, registration,register
 
 
 urlpatterns = [
@@ -28,7 +28,8 @@ urlpatterns = [
     path('transistor/', transistor_app, name='transistorlist'),
     path('transistor/<int:id_tr>/', transistor_app_id, name='transistorview'),
     path('transistor/formadd/', transistor_forma_add, name='transistoradd'),
-
+    # path('registration/', registration, name='registration'),
+    path('registration/', register, name='registration'),
 ]
 
 if settings.DEBUG:

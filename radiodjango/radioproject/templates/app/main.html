@@ -7,3 +7,12 @@
                     провести их сравнение."</h4>
                 <u><h2 style="text-align: center">фреймворк Django</h2></u>
 {% endblock %}
+
+
+
+{% block left %}
+    <aside class="left">
+          <a href="{% url 'registration' %}">Регистрация</a> | <a href="#">Войти</a>
+    </aside>
+
+{% endblock %}
