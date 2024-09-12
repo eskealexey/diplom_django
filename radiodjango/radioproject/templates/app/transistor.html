@@ -1,8 +1,12 @@
 {% extends 'app/index_template.html' %}}
 
 {% block content %}
-<h1>{{ title }}</h1>
-
+<div class="label"><h1>{{ title }}</h1></div>
+<div class="found">
+    <form action="{% url 'found' %}" method="get">
+        <button type="submit">Поиск</button><input type="text" maxlength="20" name="find">
+    </form>
+</div>
 <section >
 <table class="table" width="100%" style="margin auto">
     <thead>

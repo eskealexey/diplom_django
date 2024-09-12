@@ -8,9 +8,9 @@ from .models import Transistor
 
 
 class TransistorAdd(ModelForm):
-    userid = forms.CharField(widget=forms.HiddenInput())
+    # userid = forms.CharField(widget=forms.HiddenInput())
     class Meta:
         model = Transistor
-        fields = ["name", "markname", "type", "korpus", "descr", "path_file", "userid"]
+        fields = ["name", "markname", "type", "korpus", "descr", "path_file"]
 
 

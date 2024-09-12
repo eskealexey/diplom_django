@@ -48,9 +48,18 @@ body {
     padding: 2px;
     font-size: 36pt;
     font-style:oblique;
+    /*width: auto;*/
+    display: inline-block;
+}
+.found {
+    float: right;
+    padding: 2px;
+    font-size: 12pt;
+    font-style:oblique;
     width: auto;
     display: inline-block;
 }
+
 #footer{
     background-color: #cccccc;
     text-align: center;

@@ -13,9 +13,11 @@
 {% block left %}
     <aside class="left">
         {% if request.user.is_authenticated %}
-            {{ user.username }} |  <a href="{% url 'logout' %}">Выйти</a>
+            <p>{{ user.username }}</p>
+            <p><a href="{% url 'logout' %}"><button class="button">Выход</button></a></p>
         {% else %}
-          <a href="{% url 'registration' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a>
+          <p><a href="{% url 'registration' %}">Регистрация</a></p>
+            <p><a href="{% url 'login' %}"><button class="button">Вход</button></a></p>
         {% endif %}
     </aside>
 

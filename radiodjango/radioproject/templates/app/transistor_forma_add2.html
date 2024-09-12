@@ -4,6 +4,7 @@
 <h3>{{ title }}</h3>
 
 <section>
+
    <form method="post" action="" enctype="multipart/form-data">
      {% csrf_token %}
         {{ form.as_p }}

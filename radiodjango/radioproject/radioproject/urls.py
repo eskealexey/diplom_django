@@ -19,7 +19,7 @@ from django.template.defaulttags import url
 
 from django.urls import path, include # new
 from django.conf.urls.static import static # new
-from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add
+from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add, found
 from users.views import register, LoginUser
 
 from users.views import loguot_user
@@ -32,7 +32,8 @@ urlpatterns = [
     path('transistor/formadd/', transistor_forma_add, name='transistoradd'),
     path('registration/', register, name='registration'),
     path('login/', LoginUser.as_view(), name='login'),
-    path('logout/', loguot_user, name='logout')
+    path('logout/', loguot_user, name='logout'),
+    path('found/', found, name='found')
 ]
 
 if settings.DEBUG:
