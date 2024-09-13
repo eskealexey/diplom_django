@@ -16,7 +16,7 @@
         <th>Тип</th>
         <th>Корпус</th>
         <th>Кол-во, шт.</th>
-        <th>Путь к DataSheet</th>
+
     </tr>
     </thead>
  <tbody>
@@ -37,17 +37,8 @@
         <td>
         {{ tr.amount }}
         </td>
-        <td>
 
-        {% if tr.path_file %}
-             <p><a href="{{tr.path_file.url}}"> DataSheet</a></p>
-        {% else %}
-            <p>
-                <span class="fst-italic text-info">отсутствует</span>
-            </p>
-        {% endif %}
 
-        </td>
     </tr>
     {% endfor %}
 

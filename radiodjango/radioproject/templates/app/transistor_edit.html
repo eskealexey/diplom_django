@@ -1,0 +1,41 @@
+{% extends 'app/index_template.html' %}}
+
+{% block content %}
+<h2>{{ title }} <u>{{ data.name }}</u></h2>
+
+<section >
+    <form method="post" action=""  enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+<p>
+       <button type="submit">Сохранить измененния</button>
+     </p>
+
+    </form>
+
+</section>
+{% endblock %}
+
+
+{% block left %}
+    <aside class="left">
+        <form method="post" action="" >
+            {% csrf_token %}
+            <p>
+                {{ error }} <br>
+                <label for="quantity ">Кол-во:</label><br>
+                <input type="text" size="3" name="quantity " id="quantity " placeholder="шт." >
+            </p>
+            <p>
+                <p><input name="act" type="radio" value="add" > Добавить<br>
+                <input name="act" type="radio" value="del">Удалить</p>
+
+            </p>
+            <p>
+       <button type="submit">Выполнить</button>
+     </p>
+        </form>
+    {{ act }} {{ quantity }}
+    </aside>
+
+{% endblock %}

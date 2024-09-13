@@ -1,14 +1,14 @@
 from random import choices
-
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 # from django.template.context_processors import request
 from django.core.paginator import Paginator
 # from django.urls import reverse_lazy
 # from django.views.generic import CreateView
-from urllib3 import HTTPResponse
+# from urllib3 import HTTPResponse
 
 from .models import Transistor
-from .forms import TransistorAdd
+from .forms import TransistorAdd, TransistorEdit
 
 
 def index_app(request):
@@ -125,3 +125,30 @@ def found(request):
         'data': data,
     }
     return render(request, 'app/transistorfound.html',context=context)
+
+
+def transistor_edit(request, id_tr):
+    data = get_object_or_404(Transistor, pk=id_tr)
+    if request.method == "POST":
+        form = TransistorEdit(request.POST or None, files=request.FILES or None, instance=data)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            type_tr = form.cleaned_data['type']
+            korpus = form.cleaned_data['korpus']
+            descr = form.cleaned_data['descr']
+            path_file = form.cleaned_data['path_file']
+            form.save()
+            context = {
+                'title': 'Транзистор',
+                'data': data,
+                'form': form,
+            }
+            return render(request, 'app/transistor_id.html', context=context)
+    else:
+        form = TransistorEdit(request.POST or None, files=request.FILES or None, instance=data)
+    context = {
+        'title': 'Редактирование',
+        'data': data,
+        'form': form,
+    }
+    return render(request, 'app/transistor_edit.html', context=context)

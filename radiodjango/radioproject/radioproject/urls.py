@@ -20,6 +20,7 @@ from django.template.defaulttags import url
 from django.urls import path, include # new
 from django.conf.urls.static import static # new
 from app.views import index_app, transistor_app, transistor_app_id, transistor_forma_add, found
+from app.views import transistor_edit
 from users.views import register, LoginUser
 
 from users.views import loguot_user
@@ -33,7 +34,8 @@ urlpatterns = [
     path('registration/', register, name='registration'),
     path('login/', LoginUser.as_view(), name='login'),
     path('logout/', loguot_user, name='logout'),
-    path('found/', found, name='found')
+    path('found/', found, name='found'),
+    path('transistor/edit/<int:id_tr>', transistor_edit, name='transistorediit')
 ]
 
 if settings.DEBUG:

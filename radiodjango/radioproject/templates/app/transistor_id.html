@@ -1,9 +1,14 @@
 {% extends 'app/index_template.html' %}}
 
 {% block content %}
-<h2>{{ title }} <u>{{ data.name }}</u></h2>
+ <h2>{{ title }} <u>{{ data.name }}</u><a href="/transistor/edit/{{ data.pk }} ">
+        <img src="/static/app/img/edit.png" width="30" height="30" title="редактировать"/></a>
+
+
+ </h2>
 
 <section >
+    <p><i>Маркировка:</i> <b>{{ data.markname }}</b></p>
     <p><i>Тип:</i> <b>{{ data.type }}</b></p>
     <p><i>Корпус:</i> <b>{{ data.korpus }}</b></p>
     <p><i>Краткое описание:</i> <br>
